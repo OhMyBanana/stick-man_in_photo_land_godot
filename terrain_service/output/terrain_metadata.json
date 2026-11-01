@@ -1,0 +1,18 @@
+{
+  "source": "C:\\Users\\joshg\\AppData\\Roaming\\Godot\\app_userdata\\Stick-Man in Photo Land\\stick_man_captures\\captured_photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "detected_object_count": 2,
+  "objects": [
+    {
+      "class": "person",
+      "confidence": 0.782
+    },
+    {
+      "class": "person",
+      "confidence": 0.743
+    }
+  ],
+  "terrain_mask": "C:\\Users\\joshg\\stick-man-in-photo-land\\terrain_service\\output\\terrain_mask.png",
+  "terrain_preview": "C:\\Users\\joshg\\stick-man-in-photo-land\\terrain_service\\output\\terrain_preview.png"
+}

@@ -1,0 +1,37 @@
+STICK-MAN IN PHOTO LAND - FIRST EDITOR BUILD
+
+This build adds a first-pass level editor to the existing prototype.
+
+HOW TO RUN
+1. Open project.godot in Godot 4.7.
+2. Run the project (F6 from main.tscn or F5 if main.tscn is the main scene).
+
+EDITOR
+- Choose Spawn, Star, or + Hazard in the toolbar, then click the photo.
+- Choose Select / Move, then click and drag an existing marker to reposition it.
+- Select an object and press Delete / Backspace or click Delete to remove it.
+- Place a Spawn and a Star before pressing Play.
+- Hazards are unlimited. They are lethal during gameplay.
+
+PLAY
+- A/D or Left/Right: move.
+- W, Space, or Up: jump.
+- R: restart at the spawn marker.
+- T: toggle the terrain mask.
+- Escape: return to editing.
+- Touching a hazard or falling below the level respawns the player.
+- Touching the star wins; press Escape to return to the editor.
+
+NOTES
+- The existing custom terrain collision and animation assets are retained.
+- Level placements currently live in memory only; saving/loading is a planned next step.
+- This is a first implementation pass and should be playtested in Godot 4.7. The environment used to prepare this archive did not have the Godot executable available for an engine-side parse/run test.
+
+
+PHOTO IMPORT SCREEN - FIRST PASS
+- The project now opens to an in-game photo import screen.
+- Choose a local image (PNG, JPG, JPEG, WebP, BMP) to preview it inside the game.
+- "Play Demo Level" closes the import screen and opens the existing editor unchanged.
+- This is intentionally the first UI slice: photo-to-terrain generation is not connected yet,
+  so selecting a photo previews it but does not replace the demo level or collision mask.
+- Next milestone: connect the Python segmentation process and load its lossless PNG mask.

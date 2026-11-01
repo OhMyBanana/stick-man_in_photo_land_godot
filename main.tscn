@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://bwphv3kpy7rrc"]
+
+[ext_resource type="Script" uid="uid://djv3chnhkn4f8" path="res://player.gd" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://c1ek270wvubmh" path="res://assets/player/Fall.png" id="2_5vw27"]
+[ext_resource type="Texture2D" uid="uid://dglyvtpq20oel" path="res://assets/level/HTNE_stage.png" id="2_efxa6"]
+[ext_resource type="Script" uid="uid://ie37qcbnbsna" path="res://floor.gd" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://cui4ngve871no" path="res://stage_map.gd" id="3_dg77c"]
+[ext_resource type="Texture2D" uid="uid://cmqa0ghbx5an1" path="res://assets/player/Jump1.png" id="3_kek77"]
+[ext_resource type="Texture2D" uid="uid://f2oinlpusoif" path="res://assets/player/Run1.png" id="4_4c57u"]
+[ext_resource type="Texture2D" uid="uid://bruw4l3ctkmkk" path="res://assets/player/Run2.png" id="5_efxa6"]
+[ext_resource type="Texture2D" uid="uid://bnktm0xpk4dpk" path="res://assets/player/Run3.png" id="6_dg77c"]
+[ext_resource type="Texture2D" uid="uid://d278vu2wi7ysw" path="res://assets/player/Stand.png" id="7_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://dgngxerxlhf81" path="res://assets/level/HTNE_image.png" id="9_kek77"]
+[ext_resource type="Script" uid="uid://pjc02lirbxtd" path="res://main.gd" id="10_main"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q54yq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5vw27")
+}],
+"loop": 1,
+"name": &"fall",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_kek77")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4c57u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_efxa6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dg77c")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ycdy4")
+}],
+"loop": 1,
+"name": &"stand",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q54yq"]
+size = Vector2(16, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6e80"]
+size = Vector2(1000, 40)
+
+[node name="Main" type="Node2D" unique_id=1368499811]
+position = Vector2(-18, 0)
+script = ExtResource("10_main")
+
+[node name="PhotoBackground" type="Sprite2D" parent="." unique_id=2032970029]
+scale = Vector2(2.083, 2.083)
+texture = ExtResource("9_kek77")
+centered = false
+
+[node name="StageMap" type="Sprite2D" parent="." unique_id=1637770684]
+visible = false
+scale = Vector2(1.737, 1.737)
+texture = ExtResource("2_efxa6")
+centered = false
+script = ExtResource("3_dg77c")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=2021098372]
+position = Vector2(100, 100)
+script = ExtResource("1_0xm2m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=1318711912]
+scale = Vector2(0.025, 0.025)
+sprite_frames = SubResource("SpriteFrames_q54yq")
+animation = &"stand"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1668372905]
+shape = SubResource("RectangleShape2D_q54yq")
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1410657787]
+visible = false
+position = Vector2(551, 551)
+script = ExtResource("2_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=199055499]
+shape = SubResource("RectangleShape2D_f6e80")
+disabled = true
